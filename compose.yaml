@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - $PWD/config/nginx/local.conf:/etc/nginx/conf.d/local.conf
+      - $PWD/config/nginx/apps:/etc/nginx/conf.d/sites-enabled
+    networks:
+      - tld_network
+
+networks:
+  tld_network:
+    name: tld_network
